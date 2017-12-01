@@ -61,12 +61,11 @@ if (isset($_POST['login'])) // HANDLE THE FORM
 	<h2 class="text-center">Welcome to Mario Cart!</h2>
 	
 	<form class="form-signin" role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-		<h4 class="form-signin-heading text-center">Please give us your wallet and SSID</h4>
+		<h4 class="form-signin-heading text-center">Please enter your username and password</h4>
 		<input type="text" class="form-control" placeholder="Username" required name = "username">
 		<input type="password" class="form-control" placeholder="Password" required name="pwd"/>
-		<?php echo $errors; ?>
 		<button class="btn btn-lg btn-primary btn-block" type="submit" name="login">
-			I'm a button
+			Enter
 		</button>
 	</form>
 </div>
