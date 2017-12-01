@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4cf84424-03bc-4145-b389-06d7d05db30d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dataSources/96fac25c-4ada-4a46-886c-b13560c31ade.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/www.iml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/php.xml" afterPath="$PROJECT_DIR$/.idea/php.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc.dbc.php" afterPath="$PROJECT_DIR$/inc.dbc.php" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -257,12 +251,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1512106537209</updated>
-      <workItem from="1512106546368" duration="1563000" />
+      <workItem from="1512106546368" duration="1692000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1563000" />
+    <option name="totallyTimeSpent" value="1692000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
