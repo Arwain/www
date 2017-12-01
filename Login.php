@@ -33,7 +33,7 @@ if (isset($_POST['login'])) // HANDLE THE FORM
       $_SESSION['role']     = $rr[0]['role'];
       
       // REDIRECT TO THE CORRECT PORTAL
-      $location = ($_SESSION['role'] == 'teacher') ? "ManageCourses.php" : "Profile.php";
+      $location = ($_SESSION['role'] == 'teacher') ? "ManageCart.php" : "Profile.php";
       header("Location: " . $location);
     } else { // THROW ERROR
       $errors .= $errors . '<p class="alert-danger">Invalid Username/Password</p>';

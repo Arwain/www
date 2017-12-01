@@ -16,7 +16,7 @@ if (isset($_SESSION['userid'])) {  // determine if there is an authenticated use
      header( "Location: Profile.php");
      break;
   case "teacher":
-    header("Location: ManageCourses.php");
+    header("Location: ManageCart.php");
     break;
   default:
     header("Location: Login.php");

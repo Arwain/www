@@ -71,7 +71,7 @@ $email    = $row['email'];
 <!--  SET NAVIGATION ACTIVE HERE -->
 <!--  ************************** -->
           <li role="presentation" class="active"><a href="TeacherProfile.php">Profile</a></li>
-          <li role="presentation" class="inactive">  <a href="ManageCourses.php">Manage Courses</a></li>
+          <li role="presentation" class="inactive">  <a href="ManageCart.php">Manage Courses</a></li>
           <li role="presentation" class="inactive"><a href="ManageEnrollment.php">Manage Enrollment</a></li>
           <li role="presentation" class="inactive"><a href="Logout.php">Logout</a></li>
                   </ul>	   

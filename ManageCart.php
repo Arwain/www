@@ -130,10 +130,7 @@ $course_list .= "</tbody></table>";
 <body>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h2 class="panel-title">Welcome to TSS445 Project Demo</h2>
-    </div>
-    <div class="panel-body">
-        This mini project leverages Bootstrap 3.3.7 for HTML/CSS/JS, PHP7 and MariaDB 10.1.20
+      <h2 class="panel-title">Welcome to Mario Cart</h2>
     </div>
   </div>
   <div class="container">
@@ -144,14 +141,14 @@ $course_list .= "</tbody></table>";
 <!--  SET NAVIGATION ACTIVE HERE -->
 <!--  ************************** -->
           <li role="presentation" class="inactive"><a href="TeacherProfile.php">Profile</a></li>
-          <li role="presentation" class="active">  <a href="ManageCourses.php">Manage Courses</a></li>
-          <li role="presentation" class="inactive"><a href="ManageEnrollment.php">Manage Enrollment</a></li>
+          <li role="presentation" class="active">  <a href="ManageCart.php">Manage Shopping Cart</a></li>
+          <li role="presentation" class="inactive"><a href="ManageEnrollment.php">Manage Store</a></li>
           <li role="presentation" class="inactive"><a href="Logout.php">Logout</a></li>
         </ul>	   
       </div>
       <div class="col-sm-8">
         <div class="panel panel-default">
-          <div class="panel-heading">Welcome, <?php echo $name; ?>.  Update Courses Below</div>
+          <div class="panel-heading">Welcome, <?php echo $name; ?>. here are your current items:</div>
             <div class="panel-body">
               <?php echo $mod_message; ?>
               <?php echo $course_list; ?>
