@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="cssgate" uuid="96fac25c-4ada-4a46-886c-b13560c31ade">
+    <data-source source="LOCAL" name="CSSGATE" uuid="faec7a13-0eeb-4882-9039-0a946f59755e">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://cssgate.insttech.washington.edu:3306/ak99</jdbc-url>
+      <jdbc-url>jdbc:mysql://cssgate.insttech.washington.edu:3306/bmsg</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />
