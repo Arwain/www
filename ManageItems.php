@@ -33,12 +33,8 @@ if (isset($_POST['submit']))
 {
     if (strlen($_POST['item']) > 20 || strlen($_POST['item']) == 0)
     {
-<<<<<<< HEAD
         $new_message = '<p class="alert-danger">Item Name Invalid: ' . $_POST['item'] . '</p>';
         echo 'shit';
-=======
-        $new_message = '<p class="alert-danger">Item Name Invalid: ' . $_POST['ItemName'] . '</p>';
->>>>>>> 29a7cc210a38defbfb8e7d53dedaf55e091c26fd
     }
     else if ($_POST['Quantity'] == 0 || $_POST['Quantity'] > 100)
     {
@@ -47,14 +43,8 @@ if (isset($_POST['submit']))
     else
     {
         $new_message = '<p class="alert-success">Trying to do something here</p>';
-<<<<<<< HEAD
         $new = $db->prepare("INSERT INTO Store (ItemName, OwnerID, Quantity) VALUES (:ItemName, :OwnerID, :Quantity)");
         if ($new->execute(array(':ItemName' => $_POST['item'], ':OwnerID' => $_SESSION['userid'], ':Quantity' => $_POST['Quantity'])))
-=======
-        $is_active = ($_POST['submit'] == 'active') ? 1 : 0;
-        $add = $db->prepare("INSERT INTO Store (ItemName, OwnerID, Quantity, Price) VALUES (:ItemName, :OwnerID, :Quantity, :Price)");
-        if ($add->execute(array(':ItemName' => $_POST['ItemName'], 'OwnerID' => $_POST['OwnerID'], ':Quantity' => $_POST['Quantity'], ':Price' => $_POST['Price'])))
->>>>>>> 29a7cc210a38defbfb8e7d53dedaf55e091c26fd
         {
             $new_message = '<p class="alert-success">Successfully added item '. $_POST['course'] .'</p>' ;
         }
@@ -207,84 +197,51 @@ $course_list .= "</tbody></table>";
 
 
 ?>
-<body>
-<style>
-    body {
-        background-image: url("images/mountain.jpg");
-    }
+    <body>
+    <style>
+        body {
+            background-image: url("images/mountain.jpg");
+        }
 
-</style>
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h2 class="panel-title">Welcome to Mario Cart!</h2>
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-<<<<<<< HEAD
-        <div class="col-sm-4">
-            <ul class="nav nav-pills nav-stacked">
-                <!--  ************************** -->
-                <!--  SET NAVIGATION ACTIVE HERE -->
-                <!--  ************************** -->
-                <li role="presentation" class="inactive"><a href="OwnerProfile.php">Owner Profile</a></li>
-                <li role="presentation" class="active">  <a href="ManageItems.php">Manage Items</a></li>
-                <li role="presentation" class="inactive"><a href="Logout.php">Logout</a></li>
-            </ul>
+    </style>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">Welcome to Mario Cart!</h2>
         </div>
-        <div class="col-sm-8">
-            <div class="panel panel-default">
-                <div class="panel-heading">Welcome, <?php echo $name; ?>.  Manage Items Below</div>
-                <div class="panel-body">
-                    <!--<?php echo $mod_message; ?>-->
-                    <?php echo $ItemList; ?>
-                    <hr>
-                    <form role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                        <div class="form-group">
-                            Enter an item name to add to the shop. Must be less than 8 characters.
-                            <input type="text" placeholder="enter item name" name="item" class="form-control" />
-                            Enter the quantity available in the shop. Must be more than 0, less than 100.
-                            <input type="number" placeholder="enter item quantity" name="Quantity" class="form-control" />
-                            <button class="form-group btn btn-lg btn-primary" type="submit" name="submit" value="active">Add Item</button>
-                            <?php echo $message; ?>
-                        </div>
-                    </form>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <ul class="nav nav-pills nav-stacked">
+                    <!--  ************************** -->
+                    <!--  SET NAVIGATION ACTIVE HERE -->
+                    <!--  ************************** -->
+                    <li role="presentation" class="inactive"><a href="OwnerProfile.php">Owner Profile</a></li>
+                    <li role="presentation" class="active">  <a href="ManageItems.php">Manage Items</a></li>
+                    <li role="presentation" class="inactive"><a href="Logout.php">Logout</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Welcome, <?php echo $name; ?>.  Manage Items Below</div>
+                    <div class="panel-body">
+                        <!--<?php echo $mod_message; ?>-->
+                        <?php echo $ItemList; ?>
+                        <hr>
+                        <form role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                            <div class="form-group">
+                                Enter an item name to add to the shop. Must be less than 8 characters.
+                                <input type="text" placeholder="enter item name" name="item" class="form-control" />
+                                Enter the quantity available in the shop. Must be more than 0, less than 100.
+                                <input type="number" placeholder="enter item quantity" name="Quantity" class="form-control" />
+                                <button class="form-group btn btn-lg btn-primary" type="submit" name="submit" value="active">Add Item</button>
+                                <?php echo $message; ?>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-=======
-      <div class="col-sm-4">
-        <ul class="nav nav-pills nav-stacked">
-<!--  ************************** -->
-<!--  SET NAVIGATION ACTIVE HERE -->
-<!--  ************************** -->
-          <li role="presentation" class="inactive"><a href="OwnerProfile.php">Owner Profile</a></li>
-          <li role="presentation" class="active">  <a href="ManageItems.php">Manage Items</a></li>
-          <li role="presentation" class="inactive"><a href="Logout.php">Logout</a></li>
-        </ul>	   
-      </div>
-      <div class="col-sm-8">
-        <div class="panel panel-default">
-          <div class="panel-heading">Welcome, <?php echo $name; ?>.  Manage Items Below</div>
-            <div class="panel-body">
-             <!--<?php echo $mod_message; ?>-->
-              <?php echo $ItemList; ?>
-               <hr>
-                <form role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                  <div class="form-group">
-                      Enter an item name to add to the shop. Must be less than 8 characters.
-                      <input type="text" placeholder="enter item name" name="item" class="form-control" />
-                      Enter the quantity available in the shop. Must be more than 0, less than 100.
-                      <input type="number" placeholder="enter item quantity" name="itemQuantity" class="form-control" />
-                      <button class="form-group btn btn-lg btn-primary" type="submit" name="submit" value="active">Add Item</button>
-                    <?php echo $message; ?>
-                  </div>
-                </form>
->>>>>>> 29a7cc210a38defbfb8e7d53dedaf55e091c26fd
             </div>
         </div>
     </div>
-</div>
-</body>
+    </body>
 <?php include("./inc.footer.php");?>
-
-
- 
