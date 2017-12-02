@@ -205,12 +205,15 @@ $course_list .= "</tbody></table>";
 
 ?>
 <body>
+<style>
+    body {
+        background-image: url("images/mountain.jpg");
+    }
+
+</style>
   <div class="panel panel-default">
     <div class="panel-heading">
       <h2 class="panel-title">Welcome to Mario Cart!</h2>
-    </div>
-    <div class="panel-body">
-        This mini project leverages Bootstrap 3.3.7 for HTML/CSS/JS, PHP7 and MariaDB 10.1.20
     </div>
   </div>
   <div class="container">
@@ -229,7 +232,7 @@ $course_list .= "</tbody></table>";
         <div class="panel panel-default">
           <div class="panel-heading">Welcome, <?php echo $name; ?>.  Manage Items Below</div>
             <div class="panel-body">
-              <?php echo $mod_message; ?>
+<!--              --><?php //echo $mod_message; ?>
               <?php echo $ItemList; ?>
                <hr>
                 <form role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
