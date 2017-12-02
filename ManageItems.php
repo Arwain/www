@@ -48,8 +48,6 @@ if (isset($_POST['submit']))
         $new_message = '<p class="alert-success">Trying to do something here</p>';
         $new = $db->prepare("REPLACE INTO Store (ItemName, OwnerID, Quantity, Price) VALUES (:ItemName, :OwnerID, :Quantity, :Price)");
         if ($new->execute(array(':ItemName' => $_POST['item'], ':OwnerID' => $_SESSION['userid'], ':Quantity' => $_POST['Quantity'], ':Price'=> $_POST['Price'])))
-        $new = $db->prepare("INSERT INTO Store (ItemName, OwnerID, Quantity) VALUES (:ItemName, :OwnerID, :Quantity)");
-        if ($new->execute(array(':ItemName' => $_POST['item'], ':OwnerID' => $_SESSION['userid'], ':Quantity' => $_POST['Quantity'])))
         {
             $new_message = '<p class="alert-success">Successfully added item '. $_POST['item'] .'</p>' ;
         }
