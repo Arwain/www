@@ -240,7 +240,11 @@ $course_list .= "</tbody></table>";
                                 Enter the price of the Item. Must be between $0 and $10,000.
                                 <input type="number" step ="0.01" placeholder="enter item price" name="Price" class="form-control" />
                                 <button class="form-group btn btn-lg btn-primary" type="submit" name="submit" value="active">Add Item</button>
+<<<<<<< HEAD
                                 <!--<?php echo $message; ?>-->
+=======
+<!--                                --><?php //echo $message; ?>
+>>>>>>> 3c10ba9cda2d8a6947dcdcfb06e8f02b8621ad36
                             </div>
                         </form>
                     </div>
