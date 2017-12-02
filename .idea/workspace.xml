@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="42b151c1-1717-4076-81f7-25faf85f78ef" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/www.iml" afterPath="$PROJECT_DIR$/.idea/www.iml" />
       <change beforePath="$PROJECT_DIR$/Logout.php" afterPath="$PROJECT_DIR$/Logout.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,10 +40,10 @@
       <file leaf-file-name="Logout.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Logout.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="95" column="35" lean-forward="true" selection-start-line="95" selection-start-column="35" selection-end-line="95" selection-end-column="35" />
+            <state relative-caret-position="410">
+              <caret line="103" column="0" lean-forward="true" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
               <folding>
-                <marker date="1512203961000" expanded="true" signature="578:740" ph="SELECT useri... User" />
+                <marker date="1512204216000" expanded="true" signature="578:740" ph="SELECT useri... User" />
               </folding>
             </state>
           </provider>
@@ -52,7 +53,7 @@
         <entry file="file://$PROJECT_DIR$/Login.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="855">
-              <caret line="57" column="8" lean-forward="false" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="8" />
+              <caret line="57" column="6" lean-forward="false" selection-start-line="57" selection-start-column="6" selection-end-line="57" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -247,7 +248,7 @@
       <workItem from="1512188945572" duration="197000" />
       <workItem from="1512202440507" duration="45000" />
       <workItem from="1512202490961" duration="41000" />
-      <workItem from="1512202600505" duration="1121000" />
+      <workItem from="1512202600505" duration="1337000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed login window error">
       <created>1512101030204</created>
@@ -298,7 +299,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512203703892</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="log out">
+      <created>1512204000635</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1512204000635</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -313,7 +321,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28992000" />
+    <option name="totallyTimeSpent" value="29208000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -530,17 +538,17 @@
     <entry file="file://$PROJECT_DIR$/Login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="855">
-          <caret line="57" column="8" lean-forward="false" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="8" />
+          <caret line="57" column="6" lean-forward="false" selection-start-line="57" selection-start-column="6" selection-end-line="57" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Logout.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="95" column="35" lean-forward="true" selection-start-line="95" selection-start-column="35" selection-end-line="95" selection-end-column="35" />
+        <state relative-caret-position="410">
+          <caret line="103" column="0" lean-forward="true" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
           <folding>
-            <marker date="1512203961000" expanded="true" signature="578:740" ph="SELECT useri... User" />
+            <marker date="1512204216000" expanded="true" signature="578:740" ph="SELECT useri... User" />
           </folding>
         </state>
       </provider>

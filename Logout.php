@@ -83,8 +83,8 @@ if (isset($_POST['login'])) // HANDLE THE FORM
         height: 100%;
         background: url("images/McLogo.png") repeat;
     }body {
-        background-image: url("images/mario.gif"), url("images/McLogo.png");
-    }
+         background-image: url("images/mario.gif"), url("images/McLogo.png");
+     }
 
     h2 {
         color: red;
