@@ -59,18 +59,18 @@ if(isset($_GET['action']))
       
       switch ($_GET['action']) {
       case 'deactivate':
-        $q = $db->prepare("UPDATE Course SET is_active = 0 WHERE course_number = :course");
-        if($q->execute(array(':course'=>$_GET['cn'])))
-          $mod_message = '<p class="alert-success">Course deactivated.</p>';
+        $q = $db->prepare("UPDATE Item SET is_active = 0 WHERE ItemName = :item");
+        if($q->execute(array(':item'=>$_GET['cn'])))
+          $mod_message = '<p class="alert-success">Item deactivated.</p>';
         break;
       case 'activate':
-        $q = $db->prepare("UPDATE Course SET is_active = 1 WHERE course_number = :course");
+        $q = $db->prepare("UPDATE Item SET is_active = 1 WHERE ItemName = :item");
         if($q->execute(array(':course'=>$_GET['cn'])))
-          $mod_message = '<p class="alert-success">Course activated.</p>';
+          $mod_message = '<p class="alert-success">Item activated.</p>';
         break;
       case 'delete':
         // TWO THINGS NEEDED HERE, NEED TO CLEAR ALL REGISTRATIONS BEFORE DELETING THE COURSE
-        $reg = $db->prepare("DELETE FROM Registration WHERE course_number = :course");
+        $reg = $db->prepare("DELETE FROM Item WHERE ItemName = :item");
         if($reg->execute(array(':course'=> $_GET['cn']))) {
           $mod_message .= '<p class="alert-success">' . $reg->rowCount() . ' student(s) successfully removed from course';
         }
@@ -129,7 +129,7 @@ $course_list .= "</tbody></table>";
 ?>
 <body><style>
     body {
-        background-image: url("images/flower.jpg");
+        background-image: url("images/mountain.jpg");
     }
 </style>
   <div class="panel panel-default">

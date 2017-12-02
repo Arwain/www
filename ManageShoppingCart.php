@@ -99,7 +99,7 @@ if (count($c_res) > 0)
 <body>
 <style>
     body {
-        background-image: url("images/flower.jpg");
+        background-image: url("images/mountain.jpg");
     }
 </style>
   <div class="panel panel-default">

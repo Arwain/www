@@ -55,6 +55,11 @@ $email    = $row['Email'];
 ?>
  
 <body>
+<style>
+    body {
+        background-image: url("images/userBackground.jpg");
+    }
+</style>
   <div class="panel panel-default">
     <div class="panel-heading">
       <h2 class="panel-title">Welcome to Mario Cart!</h2>
