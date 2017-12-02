@@ -72,7 +72,17 @@ if (isset($_POST['login'])) // HANDLE THE FORM
         </button>
     </form>
 </div>
-<style>body {
+<div class="overlay"></div>
+<style>
+    .overlay {
+        opacity: .3;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("images/McLogo.png") repeat;
+    }body {
         background-image: url("images/mario.gif"), url("images/McLogo.png");
     }
 
