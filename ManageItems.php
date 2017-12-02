@@ -78,9 +78,9 @@ if(isset($_GET['action']))
 }
 
 // DRAW THE FORMS
-$c = $db->prepare('SELECT S.ItemName, S.Price, S.Quantity as Store
-                     FROM Store S
-                   GROUP BY S.ItemName' );
+$c = $db->prepare('SELECT ItemName, Price, Quantity
+                     FROM Store
+                   GROUP BY ItemName' );
 
 $c->execute(array(':uid' => $_SESSION['userid']));
 
