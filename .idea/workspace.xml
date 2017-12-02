@@ -39,10 +39,10 @@
       <file leaf-file-name="Logout.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Logout.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="77" column="19" lean-forward="false" selection-start-line="77" selection-start-column="19" selection-end-line="77" selection-end-column="19" />
+            <state relative-caret-position="331">
+              <caret line="95" column="35" lean-forward="true" selection-start-line="95" selection-start-column="35" selection-end-line="95" selection-end-column="35" />
               <folding>
-                <marker date="1512203673000" expanded="true" signature="578:740" ph="SELECT useri... User" />
+                <marker date="1512203961000" expanded="true" signature="578:740" ph="SELECT useri... User" />
               </folding>
             </state>
           </provider>
@@ -247,7 +247,7 @@
       <workItem from="1512188945572" duration="197000" />
       <workItem from="1512202440507" duration="45000" />
       <workItem from="1512202490961" duration="41000" />
-      <workItem from="1512202600505" duration="856000" />
+      <workItem from="1512202600505" duration="1121000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed login window error">
       <created>1512101030204</created>
@@ -291,7 +291,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512203001944</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="log out">
+      <created>1512203703889</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1512203703892</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -306,7 +313,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28727000" />
+    <option name="totallyTimeSpent" value="28992000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -530,10 +537,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Logout.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="77" column="19" lean-forward="false" selection-start-line="77" selection-start-column="19" selection-end-line="77" selection-end-column="19" />
+        <state relative-caret-position="331">
+          <caret line="95" column="35" lean-forward="true" selection-start-line="95" selection-start-column="35" selection-end-line="95" selection-end-column="35" />
           <folding>
-            <marker date="1512203673000" expanded="true" signature="578:740" ph="SELECT useri... User" />
+            <marker date="1512203961000" expanded="true" signature="578:740" ph="SELECT useri... User" />
           </folding>
         </state>
       </provider>

@@ -97,5 +97,7 @@ if (isset($_POST['login'])) // HANDLE THE FORM
         font-size: 24px;
     }</style>
 <audio autoplay>
+    <source src="sounds/startheme.ogg" type="audio/ogg">
     <source src="sounds/startheme.mp3" type="audio/mp3">
+
 </audio>
