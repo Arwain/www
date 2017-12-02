@@ -80,20 +80,22 @@ if(isset($_GET['action']))
 // DRAW THE FORMS
 $c = $db->prepare('SELECT S.ItemName, S.Price, S.Quantity as Store
                      FROM Store S
-                   GROUP BY S.ItemName, S.Price' );
+                   GROUP BY S.ItemName' );
 
 $c->execute(array(':uid' => $_SESSION['userid']));
 
 if ($c->rowCount() > 0)
 { // THERE ARE Items, DRAW THE FORM
+
+    /*$course_list = '<table class="table table-striped"><thead><tr><th>CourseNumber</th><th># Students</th><th>Activation</th><th>Remove</th></tr></thead><tbody>';
+    foreach($c as $course)
+    {
+        $course_list .= '<tr><td>' . $course['course_number'] . '</td><td>'.$course['Students']. '</td>';
+    */
     $ItemList = '<table class="table table-striped"><thead><tr><th>ItemName</th><th>Price</th><th>Quantity</th></tr></thead><tbody>';
     foreach($c as $Item)
     {
         $ItemList .= '<tr><td>' . $Item['ItemName'] . '</td><td>'.$Item['Price']. '</td><td>'.$Item['Quantity']. '</td>';
-        if ($Item['Quantity'] > 0)
-        {
-            $ItemList .= '<td><a href="' . $_SERVER['PHP_SELF'] . '?action=delete&cn='.$Item['Quantity'].'&uid='.$_SESSION['userid'].'">Delete</td></tr>';
-        }
     }
 
     $ItemList .= "</tbody></table>";
@@ -227,8 +229,8 @@ $course_list .= "</tbody></table>";
         <div class="panel panel-default">
           <div class="panel-heading">Welcome, <?php echo $name; ?>.  Manage Items Below</div>
             <div class="panel-body">
-              <!--<?php echo $mod_message; ?>
-              <?php echo $course_list; ?>-->
+              <?php echo $mod_message; ?>
+              <?php echo $ItemList; ?>
                <hr>
                 <form role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                   <div class="form-group">
