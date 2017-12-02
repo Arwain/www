@@ -238,9 +238,9 @@ $course_list .= "</tbody></table>";
                                 Enter the quantity available in the shop. Must be more than 0, less than 100.
                                 <input type="number" placeholder="enter item quantity" name="Quantity" class="form-control" />
                                 Enter the price of the Item. Must be between $0 and $10,000.
-                                <input type="number" placeholder="enter item price" name="Price" class="form-control" />
+                                <input type="number" step ="0.01" placeholder="enter item price" name="Price" class="form-control" />
                                 <button class="form-group btn btn-lg btn-primary" type="submit" name="submit" value="active">Add Item</button>
-<!--                                --><?php //echo $message; ?>
+                                <!--<?php echo $message; ?>-->
                             </div>
                         </form>
                     </div>
