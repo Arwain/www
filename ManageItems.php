@@ -59,18 +59,18 @@ if(isset($_GET['action']))
       
       switch ($_GET['action']) {
       case 'deactivate':
-        $q = $db->prepare("UPDATE Course SET is_active = 0 WHERE course_number = :course");
-        if($q->execute(array(':course'=>$_GET['cn'])))
-          $mod_message = '<p class="alert-success">Course deactivated.</p>';
+        $q = $db->prepare("UPDATE Item SET is_active = 0 WHERE ItemName = :item");
+        if($q->execute(array(':item'=>$_GET['cn'])))
+          $mod_message = '<p class="alert-success">Item deactivated.</p>';
         break;
       case 'activate':
-        $q = $db->prepare("UPDATE Course SET is_active = 1 WHERE course_number = :course");
+        $q = $db->prepare("UPDATE Item SET is_active = 1 WHERE ItemName = :item");
         if($q->execute(array(':course'=>$_GET['cn'])))
-          $mod_message = '<p class="alert-success">Course activated.</p>';
+          $mod_message = '<p class="alert-success">Item activated.</p>';
         break;
       case 'delete':
         // TWO THINGS NEEDED HERE, NEED TO CLEAR ALL REGISTRATIONS BEFORE DELETING THE COURSE
-        $reg = $db->prepare("DELETE FROM Registration WHERE course_number = :course");
+        $reg = $db->prepare("DELETE FROM Item WHERE ItemName = :item");
         if($reg->execute(array(':course'=> $_GET['cn']))) {
           $mod_message .= '<p class="alert-success">' . $reg->rowCount() . ' student(s) successfully removed from course';
         }
@@ -127,13 +127,14 @@ $course_list .= "</tbody></table>";
 
 
 ?>
-<body>
+<body><style>
+    body {
+        background-image: url("images/mountain.jpg");
+    }
+</style>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h2 class="panel-title">Welcome to TSS445 Project Demo</h2>
-    </div>
-    <div class="panel-body">
-        This mini project leverages Bootstrap 3.3.7 for HTML/CSS/JS, PHP7 and MariaDB 10.1.20
+      <h2 class="panel-title">Welcome to Mario Cart!</h2>
     </div>
   </div>
   <div class="container">
@@ -151,14 +152,14 @@ $course_list .= "</tbody></table>";
       </div>
       <div class="col-sm-8">
         <div class="panel panel-default">
-          <div class="panel-heading">Welcome, <?php echo $name; ?>.  Update Courses Below</div>
+          <div class="panel-heading">Welcome, <?php echo $name; ?>. manage your items below</div>
             <div class="panel-body">
               <?php echo $mod_message; ?>
               <?php echo $course_list; ?>
                <hr>
                 <form role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                   <div class="form-group">
-                    Type a new course number to enroll.  Course numbers cannot be more than 8 characters long.
+                    Type a new item.  Item descriptions cannot be more than 8 characters long.
                     <input type="text" placeholder="enter course number" name="course" class="form-control" />
                     <button class="form-group btn btn-lg btn-primary" type="submit" name="submit" value="active">CREATE AND ACTIVATE</button>
                     <button class="form-group btn btn-lg" type="submit" name="submit" value="inactive">Create as inactive</button>
