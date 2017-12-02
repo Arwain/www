@@ -33,9 +33,12 @@ if (isset($_POST['submit']))
 {
     if (strlen($_POST['item']) > 20 || strlen($_POST['item']) == 0)
     {
+<<<<<<< HEAD
         $new_message = '<p class="alert-danger">Item Name Invalid: ' . $_POST['item'] . '</p>';
         echo 'shit';
+=======
         $new_message = '<p class="alert-danger">Item Name Invalid: ' . $_POST['ItemName'] . '</p>';
+>>>>>>> 29a7cc210a38defbfb8e7d53dedaf55e091c26fd
     }
     else if ($_POST['Quantity'] == 0 || $_POST['Quantity'] > 100)
     {
@@ -44,11 +47,14 @@ if (isset($_POST['submit']))
     else
     {
         $new_message = '<p class="alert-success">Trying to do something here</p>';
+<<<<<<< HEAD
         $new = $db->prepare("INSERT INTO Store (ItemName, OwnerID, Quantity) VALUES (:ItemName, :OwnerID, :Quantity)");
         if ($new->execute(array(':ItemName' => $_POST['item'], ':OwnerID' => $_SESSION['userid'], ':Quantity' => $_POST['Quantity'])))
+=======
         $is_active = ($_POST['submit'] == 'active') ? 1 : 0;
         $add = $db->prepare("INSERT INTO Store (ItemName, OwnerID, Quantity, Price) VALUES (:ItemName, :OwnerID, :Quantity, :Price)");
         if ($add->execute(array(':ItemName' => $_POST['ItemName'], 'OwnerID' => $_POST['OwnerID'], ':Quantity' => $_POST['Quantity'], ':Price' => $_POST['Price'])))
+>>>>>>> 29a7cc210a38defbfb8e7d53dedaf55e091c26fd
         {
             $new_message = '<p class="alert-success">Successfully added item '. $_POST['course'] .'</p>' ;
         }
@@ -215,6 +221,7 @@ $course_list .= "</tbody></table>";
 </div>
 <div class="container">
     <div class="row">
+<<<<<<< HEAD
         <div class="col-sm-4">
             <ul class="nav nav-pills nav-stacked">
                 <!--  ************************** -->
@@ -243,6 +250,7 @@ $course_list .= "</tbody></table>";
                         </div>
                     </form>
                 </div>
+=======
       <div class="col-sm-4">
         <ul class="nav nav-pills nav-stacked">
 <!--  ************************** -->
@@ -270,6 +278,7 @@ $course_list .= "</tbody></table>";
                     <?php echo $message; ?>
                   </div>
                 </form>
+>>>>>>> 29a7cc210a38defbfb8e7d53dedaf55e091c26fd
             </div>
         </div>
     </div>
