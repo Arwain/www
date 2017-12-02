@@ -28,8 +28,83 @@ $name     = $row['PreferredName'];
 $email    = $row['Email'];
 
 
+// Handle Updates to Items
+if (isset($_POST['submit']))
+{
+    if (strlen($_POST['ItemName']) > 20 || strlen($_POST['ItemName']) == 0)
+    {
+        $new_message = '<p class="alert-danger">Item Name Invalid: ' . $_POST['itemName'] . '</p>';
+    }
+    else if ($_POST['Quantity'] == 0 || $_POST['Quantity'] > 100)
+    {
+        $new_message = '<p class="alert-danger">Item Quantity Invalid: ' . $_POST['Quantity'] . '</p>';
+    }
+    else
+    {
+        $new_message = '<p class="alert-success">Trying to do something here</p>';
+        $is_active = ($_POST['submit'] == 'active') ? 1 : 0;
+        $new = $db->prepare("INSERT INTO Store (ItemName, OwnerID, Quantity, Price) VALUES (:ItemName, :OwnerID, :Quantity, :Price)");
+        if ($new->execute(array(':OwnerID' => $_POST['OwnerID'], ':Quantity' => $_POST['Quantity'], ':Price' => $_SESSION['Price'])))
+        {
+            $new_message = '<p class="alert-success">Successfully added item '. $_POST['course'] .'</p>' ;
+        }
+        else
+        {
+            $new_message = '<p class="alert-warning">Failed to add item, that item might already exist.</p>';
+        }
+    }
+}
 
-// HANDLE UPDATES TO COURSES USING POST
+// Handle Deleting Items
+if(isset($_GET['action']))
+{
+    // MAKE SURE THE SESSION USER IS THE SAME AS THE USER REQUEST.
+    if($_GET['uid'] == $_SESSION['userid'])
+    {
+
+        if ((strcmp($_GET['action'], 'delete') == 0))
+        {
+            $reg = $db->prepare("DELETE FROM Store WHERE ItemName = :itemName");
+            if($reg->execute(array(':Store'=> $_GET['ItemName'])))
+            {
+                $mod_message .= '<p class="alert-success">' . $reg->rowCount() . ' item(s) successfully removed from store';
+            }
+        }
+    }
+    else
+    {
+        $mod_message = '<p class="alert-warning">Unable to perform the requested action: '.$_GET['action'].'</p>';
+    }
+}
+
+// DRAW THE FORMS
+$c = $db->prepare('SELECT S.ItemName, S.Price, S.Quantity as Store
+                     FROM Store S
+                   GROUP BY S.ItemName, S.Price' );
+
+$c->execute(array(':uid' => $_SESSION['userid']));
+
+if ($c->rowCount() > 0)
+{ // THERE ARE Items, DRAW THE FORM
+    $ItemList = '<table class="table table-striped"><thead><tr><th>ItemName</th><th>Price</th><th>Quantity</th></tr></thead><tbody>';
+    foreach($c as $Item)
+    {
+        $ItemList .= '<tr><td>' . $Item['ItemName'] . '</td><td>'.$Item['Price']. '</td><td>'.$Item['Quantity']. '</td>';
+        if ($Item['Quantity'] > 0)
+        {
+            $ItemList .= '<td><a href="' . $_SERVER['PHP_SELF'] . '?action=delete&cn='.$Item['Quantity'].'&uid='.$_SESSION['userid'].'">Delete</td></tr>';
+        }
+    }
+
+    $ItemList .= "</tbody></table>";
+}
+else
+{
+    $ItemList = '<p class="alert-warning">There are no items. Add one below.</p>';
+}
+
+/*
+ HANDLE UPDATES TO COURSES USING POST
 if(isset($_POST['submit']))
 {
   if(strlen($_POST['course']) > 8 || strlen($_POST['course']) == 0)
@@ -59,18 +134,18 @@ if(isset($_GET['action']))
       
       switch ($_GET['action']) {
       case 'deactivate':
-        $q = $db->prepare("UPDATE Item SET is_active = 0 WHERE ItemName = :item");
-        if($q->execute(array(':item'=>$_GET['cn'])))
-          $mod_message = '<p class="alert-success">Item deactivated.</p>';
+        $q = $db->prepare("UPDATE Course SET is_active = 0 WHERE course_number = :course");
+        if($q->execute(array(':course'=>$_GET['cn'])))
+          $mod_message = '<p class="alert-success">Course deactivated.</p>';
         break;
       case 'activate':
-        $q = $db->prepare("UPDATE Item SET is_active = 1 WHERE ItemName = :item");
+        $q = $db->prepare("UPDATE Course SET is_active = 1 WHERE course_number = :course");
         if($q->execute(array(':course'=>$_GET['cn'])))
-          $mod_message = '<p class="alert-success">Item activated.</p>';
+          $mod_message = '<p class="alert-success">Course activated.</p>';
         break;
       case 'delete':
         // TWO THINGS NEEDED HERE, NEED TO CLEAR ALL REGISTRATIONS BEFORE DELETING THE COURSE
-        $reg = $db->prepare("DELETE FROM Item WHERE ItemName = :item");
+        $reg = $db->prepare("DELETE FROM Registration WHERE course_number = :course");
         if($reg->execute(array(':course'=> $_GET['cn']))) {
           $mod_message .= '<p class="alert-success">' . $reg->rowCount() . ' student(s) successfully removed from course';
         }
@@ -120,21 +195,20 @@ foreach($c as $course)
 $course_list .= "</tbody></table>";
 } else {
   $course_list = '<p class="alert-warning">There are no courses.  Add one below.</p>';
-}
+}*/
 
 
 
 
 
 ?>
-<body><style>
-    body {
-        background-image: url("images/mountain.jpg");
-    }
-</style>
+<body>
   <div class="panel panel-default">
     <div class="panel-heading">
       <h2 class="panel-title">Welcome to Mario Cart!</h2>
+    </div>
+    <div class="panel-body">
+        This mini project leverages Bootstrap 3.3.7 for HTML/CSS/JS, PHP7 and MariaDB 10.1.20
     </div>
   </div>
   <div class="container">
@@ -146,23 +220,23 @@ $course_list .= "</tbody></table>";
 <!--  ************************** -->
           <li role="presentation" class="inactive"><a href="OwnerProfile.php">Owner Profile</a></li>
           <li role="presentation" class="active">  <a href="ManageItems.php">Manage Items</a></li>
-          <li role="presentation" class="inactive"><a href="ManageEnrollment.php">Manage Enrollment</a></li>
           <li role="presentation" class="inactive"><a href="Logout.php">Logout</a></li>
         </ul>	   
       </div>
       <div class="col-sm-8">
         <div class="panel panel-default">
-          <div class="panel-heading">Welcome, <?php echo $name; ?>. manage your items below</div>
+          <div class="panel-heading">Welcome, <?php echo $name; ?>.  Manage Items Below</div>
             <div class="panel-body">
-              <?php echo $mod_message; ?>
-              <?php echo $course_list; ?>
+              <!--<?php echo $mod_message; ?>
+              <?php echo $course_list; ?>-->
                <hr>
                 <form role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                   <div class="form-group">
-                    Type a new item.  Item descriptions cannot be more than 8 characters long.
-                    <input type="text" placeholder="enter course number" name="course" class="form-control" />
-                    <button class="form-group btn btn-lg btn-primary" type="submit" name="submit" value="active">CREATE AND ACTIVATE</button>
-                    <button class="form-group btn btn-lg" type="submit" name="submit" value="inactive">Create as inactive</button>
+                      Enter an item name to add to the shop. Must be less than 8 characters.
+                      <input type="text" placeholder="enter item name" name="item" class="form-control" />
+                      Enter the quantity available in the shop. Must be more than 0, less than 100.
+                      <input type="number" placeholder="enter item quantity" name="itemQuantity" class="form-control" />
+                      <button class="form-group btn btn-lg btn-primary" type="submit" name="submit" value="active">Add Item</button>
                     <?php echo $new_message; ?>
                   </div>
                 </form>
