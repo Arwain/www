@@ -7,22 +7,10 @@
     <orderEntry type="module-library">
       <library name="PHP" type="php">
         <CLASSES>
-          <root url="file://$USER_HOME$/Desktop" />
-          <root url="file://$MODULE_DIR$/../bin/php/php7.0.23" />
+          <root url="file://$APPLICATION_HOME_DIR$/bin" />
         </CLASSES>
         <SOURCES>
-          <root url="file://$USER_HOME$/Desktop" />
-          <root url="file://$MODULE_DIR$/../bin/php/php7.0.23" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="PHARS">
-        <CLASSES>
-          <root url="phar://$MODULE_DIR$/../bin/php/php7.0.23/pharcommand.phar/" />
-        </CLASSES>
-        <SOURCES>
-          <root url="phar://$MODULE_DIR$/../bin/php/php7.0.23/pharcommand.phar/" />
+          <root url="file://$APPLICATION_HOME_DIR$/bin" />
         </SOURCES>
       </library>
     </orderEntry>
