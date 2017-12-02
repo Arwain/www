@@ -33,7 +33,7 @@ if (isset($_POST['submit']))
 {
     if (strlen($_POST['ItemName']) > 20 || strlen($_POST['ItemName']) == 0)
     {
-        $new_message = '<p class="alert-danger">Item Name Invalid: ' . $_POST['itemName'] . '</p>';
+        $new_message = '<p class="alert-danger">Item Name Invalid: ' . $_POST['ItemName'] . '</p>';
     }
     else if ($_POST['Quantity'] == 0 || $_POST['Quantity'] > 100)
     {
@@ -43,8 +43,8 @@ if (isset($_POST['submit']))
     {
         $new_message = '<p class="alert-success">Trying to do something here</p>';
         $is_active = ($_POST['submit'] == 'active') ? 1 : 0;
-        $new = $db->prepare("INSERT INTO Store (ItemName, OwnerID, Quantity, Price) VALUES (:ItemName, :OwnerID, :Quantity, :Price)");
-        if ($new->execute(array(':OwnerID' => $_POST['OwnerID'], ':Quantity' => $_POST['Quantity'], ':Price' => $_SESSION['Price'])))
+        $add = $db->prepare("INSERT INTO Store (ItemName, OwnerID, Quantity, Price) VALUES (:ItemName, :OwnerID, :Quantity, :Price)");
+        if ($add->execute(array(':ItemName' => $_POST['ItemName'], 'OwnerID' => $_POST['OwnerID'], ':Quantity' => $_POST['Quantity'], ':Price' => $_POST['Price'])))
         {
             $new_message = '<p class="alert-success">Successfully added item '. $_POST['course'] .'</p>' ;
         }
@@ -61,19 +61,17 @@ if(isset($_GET['action']))
     // MAKE SURE THE SESSION USER IS THE SAME AS THE USER REQUEST.
     if($_GET['uid'] == $_SESSION['userid'])
     {
-
-        if ((strcmp($_GET['action'], 'delete') == 0))
+        $remove = $db->prepare('DELETE FROM Store WHERE ItemName = :ItemName');
+        if($remove->execute(array(':ItemName'=> $_GET['it'])))
         {
-            $reg = $db->prepare("DELETE FROM Store WHERE ItemName = :itemName");
-            if($reg->execute(array(':Store'=> $_GET['ItemName'])))
-            {
-                $mod_message .= '<p class="alert-success">' . $reg->rowCount() . ' item(s) successfully removed from store';
-            }
+
+            $message = '<p class="alert-success">Successfully removed item: ' . $_GET['it'] . '</p>';
+        } else {
+            $message = '<p class="alert-warning">Error removing item.  Try again later.</p>';
         }
-    }
-    else
-    {
-        $mod_message = '<p class="alert-warning">Unable to perform the requested action: '.$_GET['action'].'</p>';
+
+    } else {
+        $message = '<p class="alert-warning">Unable to take the desired action</p>';
     }
 }
 
@@ -85,17 +83,12 @@ $c = $db->prepare('SELECT ItemName, Price, Quantity
 $c->execute(array(':uid' => $_SESSION['userid']));
 
 if ($c->rowCount() > 0)
-{ // THERE ARE Items, DRAW THE FORM
-
-    /*$course_list = '<table class="table table-striped"><thead><tr><th>CourseNumber</th><th># Students</th><th>Activation</th><th>Remove</th></tr></thead><tbody>';
-    foreach($c as $course)
-    {
-        $course_list .= '<tr><td>' . $course['course_number'] . '</td><td>'.$course['Students']. '</td>';
-    */
-    $ItemList = '<table class="table table-striped"><thead><tr><th>Item Name</th><th>Price</th><th>Quantity</th></tr></thead><tbody>';
+{
+    $ItemList = '<table class="table table-striped"><thead><tr><th>Item Name</th><th>Price</th><th>Quantity</th><th>Action</th></tr></thead><tbody>';
     foreach($c as $Item)
     {
         $ItemList .= '<tr><td>' . $Item['ItemName'] . '</td><td>'.$Item['Price']. '</td><td>'.$Item['Quantity']. '</td>';
+        $ItemList .= '<td><a href="' . $_SERVER['PHP_SELF'] . '?action=del&it='.$Item['ItemName'] . '&uid='.$_SESSION['userid'].'">Delete</a></td></tr>';
     }
 
     $ItemList .= "</tbody></table>";
@@ -232,7 +225,7 @@ $course_list .= "</tbody></table>";
         <div class="panel panel-default">
           <div class="panel-heading">Welcome, <?php echo $name; ?>.  Manage Items Below</div>
             <div class="panel-body">
-<!--              --><?php //echo $mod_message; ?>
+             <!--<?php echo $mod_message; ?>-->
               <?php echo $ItemList; ?>
                <hr>
                 <form role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
@@ -242,7 +235,7 @@ $course_list .= "</tbody></table>";
                       Enter the quantity available in the shop. Must be more than 0, less than 100.
                       <input type="number" placeholder="enter item quantity" name="itemQuantity" class="form-control" />
                       <button class="form-group btn btn-lg btn-primary" type="submit" name="submit" value="active">Add Item</button>
-                    <?php echo $new_message; ?>
+                    <?php echo $message; ?>
                   </div>
                 </form>
             </div>
