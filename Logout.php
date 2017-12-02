@@ -82,7 +82,7 @@ if (isset($_POST['login'])) // HANDLE THE FORM
         font-size: 54px;
     }
     h4{
-        color: red;
+        color: #4581ff;
         font-family: Comic Sans MS;
         font-size: 24px;
     }</style>
