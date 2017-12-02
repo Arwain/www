@@ -3,8 +3,8 @@ if(!isset($_SESSION)){
     session_start();
 }
 
-// SET $page_type = 'student','teacher','public'
-$page_type = 'teacher';
+// SET $page_type = 'customer','owner','public'
+$page_type = 'customer';
 require('inc.header.php');
 
 
@@ -17,9 +17,9 @@ if (isset($_POST['update'])) // HANDLE THE FORM
   }
 
   // PREVENT SQL INJECTION
-  $q = $db->prepare('UPDATE User SET preferred_name = :name
-                                    , email          = :email 
-                                WHERE userid         = :uid');
+  $q = $db->prepare('UPDATE User SET PreferredName = :name
+                                    , Email          = :email 
+                                WHERE UserID         = :uid');
   $q->execute(array(':name'  => stripslashes($_POST['pref_name']),
                     ':email' => stripslashes($_POST['email']),
                     ':uid'   => $_SESSION['userid']));
@@ -38,18 +38,18 @@ if (!isset($db)) {
 }
 
 # BUILD QUERY
-$q = 'SELECT userid, username, preferred_name, email 
+$q = 'SELECT UserID, Username, PreferredName, Email 
        FROM User
-      WHERE userid = ' . $_SESSION['userid'];
+      WHERE UserID = ' . $_SESSION['userid'];
 
 $r = $db->query($q);
 
 $row = $r->fetch(); // GET A SINGLE ROW
 
-$username = $row['username'];
-$userid   = $row['userid'];
-$name     = $row['preferred_name'];
-$email    = $row['email'];
+$username = $row['Username'];
+$userid   = $row['UserID'];
+$name     = $row['PreferredName'];
+$email    = $row['Email'];
 
 
 ?>
@@ -70,11 +70,11 @@ $email    = $row['email'];
 <!--  ************************** -->
 <!--  SET NAVIGATION ACTIVE HERE -->
 <!--  ************************** -->
-          <li role="presentation" class="active"><a href="TeacherProfile.php">Profile</a></li>
-          <li role="presentation" class="inactive">  <a href="ManageCart.php">Manage Courses</a></li>
-          <li role="presentation" class="inactive"><a href="ManageEnrollment.php">Manage Enrollment</a></li>
+          <li role="presentation" class="active">  <a href="CustomerProfile.php">Customer Profile</a></li>
+          <li role="presentation" class="inactive"><a href="ManageShoppingCart.php">Manage Shopping Cart</a></li>
+          <li role="presentation" class="inactive">  <a href="ContactOwner.php">Contact Owner</a></li>
           <li role="presentation" class="inactive"><a href="Logout.php">Logout</a></li>
-                  </ul>	   
+          </ul>	   
       </div>
       <div class="col-sm-8">
         <div class="panel panel-default">

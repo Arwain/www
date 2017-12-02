@@ -3,13 +3,13 @@ if(!isset($_SESSION)){
     session_start();
 }
 
-// SET $page_type = 'student','teacher','public'
-$page_type = 'student';
+// SET $page_type = 'customer','owner','public'
+$page_type = 'customer';
 require('inc.header.php');
 
 if(!isset($db))
 {
-  require ('inc.dbc.php');
+  require('inc.dbc.php');
   $db = get_connection();
 }
 
@@ -99,7 +99,7 @@ if (count($c_res) > 0)
 <body>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h2 class="panel-title">Welcome to Mario Cart</h2>
+      <h2 class="panel-title">Welcome to TSS445 Project Demo</h2>
     </div>
     <div class="panel-body">
       This mini project leverages Bootstrap 3.3.7 for HTML/CSS/JS, PHP7 and MariaDB 10.1.20
@@ -112,9 +112,9 @@ if (count($c_res) > 0)
 <!--  ************************** -->
 <!--  SET NAVIGATION ACTIVE HERE -->
 <!--  ************************** -->
-          <li role="presentation" class="inactive">  <a href="Profile.php">Profile</a></li>
-          <li role="presentation" class="active">    <a href="ManageStudentEnrollment.php">Manage Enrollment</a></li>
-          <li role="presentation" class="inactive">  <a href="ContactTeacher.php">Contact Teacher</a></li>
+          <li role="presentation" class="inactive">  <a href="CustomerProfile.php">Customer Profile</a></li>
+          <li role="presentation" class="active">    <a href="ManageShoppingCart.php">Manage Shopping Cart</a></li>
+          <li role="presentation" class="inactive">  <a href="ContactOwner.php">Contact Owner</a></li>
           <li role="presentation" class="inactive">  <a href="Logout.php">Logout</a></li>
         
           </ul>	   

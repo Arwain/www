@@ -3,8 +3,8 @@ if(!isset($_SESSION)){
     session_start();
 }
 
-// SET $page_type = 'student','teacher','public'
-$page_type = 'student';
+// SET $page_type = 'customer','owner','public'
+$page_type = 'customer';
 require('inc.header.php');
 
 ?>
@@ -25,9 +25,9 @@ require('inc.header.php');
 <!--  ************************** -->
 <!--  SET NAVIGATION ACTIVE HERE -->
 <!--  ************************** -->
-          <li role="presentation" class="inactive">  <a href="Profile.php">Profile</a></li>
-          <li role="presentation" class="inactive"><a href="ManageStudentEnrollment.php">Manage Enrollment</a></li>
-          <li role="presentation" class="active">  <a href="ContactTeacher.php">Contact Teacher</a></li>
+          <li role="presentation" class="inactive">  <a href="CustomerProfile.php">Customer Profile</a></li>
+          <li role="presentation" class="inactive"><a href="ManageShoppingCart.php">Manage Shopping Cart</a></li>
+          <li role="presentation" class="active">  <a href="ContactOwner.php">Contact Owner</a></li>
           <li role="presentation" class="inactive"><a href="Logout.php">Logout</a></li>
           </ul>	   
       </div>

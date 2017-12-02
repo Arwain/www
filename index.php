@@ -13,10 +13,10 @@ if(!isset($_SESSION)){
 if (isset($_SESSION['userid'])) {  // determine if there is an authenticated user.
   switch (strtolower($_SESSION['role'])) {
   case "student":
-     header( "Location: Profile.php");
+     header( "Location: CustomerProfile.php");
      break;
   case "teacher":
-    header("Location: ManageCart.php");
+    header("Location: ManageItems.php");
     break;
   default:
     header("Location: Login.php");

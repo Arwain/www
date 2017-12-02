@@ -12,7 +12,7 @@ if (isset($_POST['login'])) // HANDLE THE FORM
     // CHECK USER IN DATABASE, THIS IS SUSEPTABLE TO SQL INJECTION AND FAILURE DUE TO QUOTES
     if(!isset($db))
     {
-      require ('inc.dbc.php');
+      require('inc.dbc.php');
       $db = get_connection();
     }
     
@@ -32,11 +32,11 @@ if (isset($_POST['login'])) // HANDLE THE FORM
       $_SESSION['userid']   = $rr[0]['userid'];
       $_SESSION['role']     = $rr[0]['role'];
       
-      // REDIRECT TO THE CORRECT PORTAL
-      $location = ($_SESSION['role'] == 'teacher') ? "ManageCart.php" : "Profile.php";
+      // REDIRECT TO THE CORRECDT PORTAL
+      $location = ($_SESSION['role'] == 'owner') ? "ManageItems.php" : "CustomerProfile.php";
       header("Location: " . $location);
     } else { // THROW ERROR
-      $errors .= $errors . '<p class="alert-danger">Invalid Username/Password</p>';
+      $errors = '<p class="alert-danger">Invalid Username/Password</p>';
     }
   }
 }
@@ -48,13 +48,9 @@ if (isset($_POST['login'])) // HANDLE THE FORM
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mario Cart Sign In</title>
+    <title>TCSS445 Project Page Sign In</title>
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link href="./css/signin.css" rel="stylesheet">
-      <style>body {
-              background-image: url("images/mclogo.jpg");
-
-          } </style>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   </head>
@@ -62,14 +58,15 @@ if (isset($_POST['login'])) // HANDLE THE FORM
   <body>
 <div class="container">
 	<!-- BEGIN CONTENT -->
-	<h2 class="text-center">Welcome to Mario Cart!</h2>
+	<h2 class="text-center">Welcome to TCSS445 Project Demo!</h2>
 	
 	<form class="form-signin" role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-		<h4 class="form-signin-heading text-center">Please enter your username and password</h4>
-		<input type="text" class="form-control" placeholder="Username" required name = "username">
-		<input type="password" class="form-control" placeholder="Password" required name="pwd"/>
+		<h4 class="form-signin-heading text-center">Please sign in</h4>
+		<input type="text" class="form-control" placeholder="Username" name="username" required autofocus />
+		<input type="password" class="form-control" placeholder="Password" required name="pwd">
+
 		<button class="btn btn-lg btn-primary btn-block" type="submit" name="login">
-			Enter
+			Sign in
 		</button>
 	</form>
 </div>
