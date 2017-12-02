@@ -127,13 +127,14 @@ $course_list .= "</tbody></table>";
 
 
 ?>
-<body>
+<body><style>
+    body {
+        background-image: url("images/flower.jpg");
+    }
+</style>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h2 class="panel-title">Welcome to TSS445 Project Demo</h2>
-    </div>
-    <div class="panel-body">
-        This mini project leverages Bootstrap 3.3.7 for HTML/CSS/JS, PHP7 and MariaDB 10.1.20
+      <h2 class="panel-title">Welcome to Mario Cart!</h2>
     </div>
   </div>
   <div class="container">
@@ -151,14 +152,14 @@ $course_list .= "</tbody></table>";
       </div>
       <div class="col-sm-8">
         <div class="panel panel-default">
-          <div class="panel-heading">Welcome, <?php echo $name; ?>.  Update Courses Below</div>
+          <div class="panel-heading">Welcome, <?php echo $name; ?>. manage your items below</div>
             <div class="panel-body">
               <?php echo $mod_message; ?>
               <?php echo $course_list; ?>
                <hr>
                 <form role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                   <div class="form-group">
-                    Type a new course number to enroll.  Course numbers cannot be more than 8 characters long.
+                    Type a new item.  Item descriptions cannot be more than 8 characters long.
                     <input type="text" placeholder="enter course number" name="course" class="form-control" />
                     <button class="form-group btn btn-lg btn-primary" type="submit" name="submit" value="active">CREATE AND ACTIVATE</button>
                     <button class="form-group btn btn-lg" type="submit" name="submit" value="inactive">Create as inactive</button>
