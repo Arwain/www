@@ -4,5 +4,27 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="PHP" type="php">
+        <CLASSES>
+          <root url="file://$USER_HOME$/Desktop" />
+          <root url="file://$MODULE_DIR$/../bin/php/php7.0.23" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$USER_HOME$/Desktop" />
+          <root url="file://$MODULE_DIR$/../bin/php/php7.0.23" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="PHARS">
+        <CLASSES>
+          <root url="phar://$MODULE_DIR$/../bin/php/php7.0.23/pharcommand.phar/" />
+        </CLASSES>
+        <SOURCES>
+          <root url="phar://$MODULE_DIR$/../bin/php/php7.0.23/pharcommand.phar/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>
