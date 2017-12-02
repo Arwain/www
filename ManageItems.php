@@ -92,7 +92,7 @@ if ($c->rowCount() > 0)
     {
         $course_list .= '<tr><td>' . $course['course_number'] . '</td><td>'.$course['Students']. '</td>';
     */
-    $ItemList = '<table class="table table-striped"><thead><tr><th>ItemName</th><th>Price</th><th>Quantity</th></tr></thead><tbody>';
+    $ItemList = '<table class="table table-striped"><thead><tr><th>Item Name</th><th>Price</th><th>Quantity</th></tr></thead><tbody>';
     foreach($c as $Item)
     {
         $ItemList .= '<tr><td>' . $Item['ItemName'] . '</td><td>'.$Item['Price']. '</td><td>'.$Item['Quantity']. '</td>';
