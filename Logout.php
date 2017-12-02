@@ -1,6 +1,6 @@
 <?php
-  session_start();
-  session_destroy();
+session_start();
+session_destroy();
 
 if (isset($_POST['login'])) // HANDLE THE FORM
 {
