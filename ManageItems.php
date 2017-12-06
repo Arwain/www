@@ -26,34 +26,32 @@ $username = $row['Username'];
 $userid   = $row['UserID'];
 $name     = $row['PreferredName'];
 $email    = $row['Email'];
+$message = '';
 
 // Handle Updates to Items
 if (isset($_POST['submit']))
 {
     if (strlen($_POST['item']) > 20 || strlen($_POST['item']) == 0)
     {
-        $message = '<p class="alert-danger">Item Name Invalid: ' . $_POST['item'] . '</p>';
+        $message .= '<p class="alert-danger">Item Name Invalid: ' . $_POST['item'] . '</p>';
     }
-    else if ($_POST['Quantity'] <= 0 || $_POST['Quantity'] > 100)
+    if ($_POST['Quantity'] <= 0 || $_POST['Quantity'] > 100)
     {
-        $message = '<p class="alert-danger">Item Quantity Invalid: ' . $_POST['Quantity'] . '</p>';
+        $message .= '<p class="alert-danger">Item Quantity Invalid: ' . $_POST['Quantity'] . '</p>';
     }
-    else if ($_POST['Price'] <= 0.00 || $_POST['Price'] > 10000.00)
+    if ($_POST['Price'] <= 0.00 || $_POST['Price'] > 10000.00)
     {
-        $message = '<p class="alert-danger">Item Price Invalid: ' . $_POST['Price'] . '</p>';
+        $message .= '<p class="alert-danger">Item Price Invalid: $ ' . $_POST['Price'] . '</p>';
     }
-    else
+    elseif (strlen($_POST['item']) < 20 && (strlen($_POST['item']) != 0 && $_POST['Quantity'] >= 0 && ($_POST['Quantity'] < 100
+                && ($_POST['Price'] > 0.00 && $_POST['Price'] < 10000.00))))
     {
-        $message = '<p class="alert-success">Trying to do something here</p>';
+        $message .= '<p class="alert-success">Trying to do something here</p>';
         $new = $db->prepare("REPLACE INTO Store (ItemName, OwnerID, Quantity, Price)
         VALUES (:ItemName, :OwnerID, :Quantity, :Price)");
         if ($new->execute(array(':ItemName' => $_POST['item'], ':OwnerID' => $_SESSION['userid'], ':Quantity' => $_POST['Quantity'], ':Price'=> $_POST['Price'])))
         {
-            $message = '<p class="alert-success">Successfully added item '. $_POST['item'] .'</p>' ;
-        }
-        else
-        {
-            $message = '<p class="alert-warning">Failed to add item, that item might already exist.</p>';
+            $message = '<p class="alert-success">Successfully added or updated item '. $_POST['item'] .'</p>' ;
         }
     }
 }
@@ -226,13 +224,8 @@ $course_list .= "</tbody></table>";
                 <div class="panel panel-default">
                     <div class="panel-heading">Welcome, <?php echo $name; ?>.  Manage Items Below</div>
                     <div class="panel-body">
-                        <?php
-                        if($c->rowCount() > 0)
-                        {
-                            echo $ItemList;
-                        }
-                        echo $message;
-                        ?>
+                        <?php echo $ItemList ?>
+                        <?php echo $message ?>
                         <hr>
                         <form role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                             <div class="form-group">
