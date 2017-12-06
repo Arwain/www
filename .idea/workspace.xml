@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ed1e5de3-eda0-4b2d-84da-612b95dcc9a9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManageItems.php" afterPath="$PROJECT_DIR$/ManageItems.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManageShoppingCart.php" afterPath="$PROJECT_DIR$/ManageShoppingCart.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc.dbc.php" afterPath="$PROJECT_DIR$/inc.dbc.php" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -27,12 +27,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/85036cde-73a8-4f23-bd28-284d4d305deb/console.sql">
+      <file leaf-file-name="ManageItems.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ManageItems.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="-1980">
+              <caret line="112" column="10" lean-forward="true" selection-start-line="112" selection-start-column="10" selection-end-line="112" selection-end-column="10" />
+              <folding>
+                <marker date="1512520772132" expanded="true" signature="248:332" ph="SELECT UserI... User" />
+                <marker date="1512520772132" expanded="true" signature="1264:1375" ph="REPLACE INTO... Store" />
+                <marker date="1512520772132" expanded="true" signature="2022:2066" ph="DELETE FROM " />
+                <marker date="1512520772132" expanded="true" signature="2512:2613" ph="SELECT ItemN... Store" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -40,14 +45,14 @@
       <file leaf-file-name="ManageShoppingCart.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ManageShoppingCart.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="122" column="30" lean-forward="true" selection-start-line="122" selection-start-column="30" selection-end-line="122" selection-end-column="30" />
+            <state relative-caret-position="59">
+              <caret line="96" column="22" lean-forward="true" selection-start-line="96" selection-start-column="22" selection-end-line="96" selection-end-column="22" />
               <folding>
-                <marker date="1512520519513" expanded="true" signature="818:875" ph="INSERT INTO ShoppingCart... " />
-                <marker date="1512520519513" expanded="true" signature="1438:1507" ph="DELETE FROM " />
-                <marker date="1512520519513" expanded="true" signature="2027:2094" ph="SELECT ItemN... ShoppingCart" />
-                <marker date="1512520519513" expanded="true" signature="2910:3160" ph="SELECT I.Ite... Item" />
-                <marker date="1512520519513" expanded="true" signature="3007:3158" ph="SELECT S.Ite... ShoppingCart" />
+                <marker date="1512521319144" expanded="true" signature="818:875" ph="INSERT INTO ShoppingCart... " />
+                <marker date="1512521319144" expanded="true" signature="1438:1507" ph="DELETE FROM " />
+                <marker date="1512521319144" expanded="true" signature="2027:2094" ph="SELECT ItemN... ShoppingCart" />
+                <marker date="1512521319144" expanded="true" signature="2910:3160" ph="SELECT I.Ite... Item" />
+                <marker date="1512521319144" expanded="true" signature="3007:3158" ph="SELECT S.Ite... ShoppingCart" />
               </folding>
             </state>
           </provider>
@@ -68,6 +73,7 @@
       <list>
         <option value="$PROJECT_DIR$/inc.dbc.php" />
         <option value="$PROJECT_DIR$/ManageItems.php" />
+        <option value="$PROJECT_DIR$/ManageShoppingCart.php" />
       </list>
     </option>
   </component>
@@ -227,12 +233,12 @@
       <option name="presentableId" value="Default" />
       <updated>1512208087582</updated>
       <workItem from="1512208120033" duration="718000" />
-      <workItem from="1512240649228" duration="2957000" />
+      <workItem from="1512240649228" duration="3401000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3902000" />
+    <option name="totallyTimeSpent" value="4346000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -319,10 +325,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/85036cde-73a8-4f23-bd28-284d4d305deb/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Logout.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1512207661130" expanded="true" signature="578:740" ph="SELECT useri... User" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ManageItems.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="238" column="126" lean-forward="true" selection-start-line="237" selection-start-column="31" selection-end-line="238" selection-end-column="126" />
+        <state relative-caret-position="-1980">
+          <caret line="112" column="10" lean-forward="true" selection-start-line="112" selection-start-column="10" selection-end-line="112" selection-end-column="10" />
           <folding>
             <marker date="1512520772132" expanded="true" signature="248:332" ph="SELECT UserI... User" />
             <marker date="1512520772132" expanded="true" signature="1264:1375" ph="REPLACE INTO... Store" />
@@ -332,24 +356,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/85036cde-73a8-4f23-bd28-284d4d305deb/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ManageShoppingCart.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="122" column="30" lean-forward="true" selection-start-line="122" selection-start-column="30" selection-end-line="122" selection-end-column="30" />
+        <state relative-caret-position="59">
+          <caret line="96" column="22" lean-forward="true" selection-start-line="96" selection-start-column="22" selection-end-line="96" selection-end-column="22" />
           <folding>
-            <marker date="1512520519513" expanded="true" signature="818:875" ph="INSERT INTO ShoppingCart... " />
-            <marker date="1512520519513" expanded="true" signature="1438:1507" ph="DELETE FROM " />
-            <marker date="1512520519513" expanded="true" signature="2027:2094" ph="SELECT ItemN... ShoppingCart" />
-            <marker date="1512520519513" expanded="true" signature="2910:3160" ph="SELECT I.Ite... Item" />
-            <marker date="1512520519513" expanded="true" signature="3007:3158" ph="SELECT S.Ite... ShoppingCart" />
+            <marker date="1512521319144" expanded="true" signature="818:875" ph="INSERT INTO ShoppingCart... " />
+            <marker date="1512521319144" expanded="true" signature="1438:1507" ph="DELETE FROM " />
+            <marker date="1512521319144" expanded="true" signature="2027:2094" ph="SELECT ItemN... ShoppingCart" />
+            <marker date="1512521319144" expanded="true" signature="2910:3160" ph="SELECT I.Ite... Item" />
+            <marker date="1512521319144" expanded="true" signature="3007:3158" ph="SELECT S.Ite... ShoppingCart" />
           </folding>
         </state>
       </provider>

@@ -112,7 +112,7 @@ if (count($c_res) > 0)
 <body>
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h2 class="panel-title">Welcome to TSS445 Project Demo</h2>
+        <h2 class="panel-title">Welcome to Mario Cart!</h2>
     </div>
     <div class="panel-body">
         This mini project leverages Bootstrap 3.3.7 for HTML/CSS/JS, PHP7 and MariaDB 10.1.20
@@ -127,7 +127,6 @@ if (count($c_res) > 0)
                 <!--  ************************** -->
                 <li role="presentation" class="inactive">  <a href="CustomerProfile.php">Customer Profile</a></li>
                 <li role="presentation" class="active">    <a href="ManageShoppingCart.php">Manage Shopping Cart</a></li>
-                <li role="presentation" class="inactive">  <a href="ContactOwner.php">Contact Owner</a></li>
                 <li role="presentation" class="inactive">  <a href="Logout.php">Logout</a></li>
             </ul>
         </div>
