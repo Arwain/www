@@ -11,6 +11,7 @@ if (!isset($db)) {
     require('inc.dbc.php');
     $db = get_connection();
 }
+$abc = "Enter the amount of the item you'd like to buy. Must be more than 0, up to the maximum amount in stock.";
 
 # BUILD QUERY
 $q = 'SELECT UserID, Username, PreferredName, Email
@@ -30,11 +31,15 @@ $message = '';
 // Handle Creation/Updates of Items
 if (isset($_POST['accept']))
 {
+    if (strcmp($_POST['item'], "--- Select an Item Below ---") == 0)
+    {
+        $message .= '<p class="alert-danger">Please Select An Item</p>';
+    }
     if ($_POST['quantity'] <= 0 || $_POST['quantity'] >= 100)
     {
         $message .= '<p class="alert-danger">Item Quantity Invalid: ' . $_POST['quantity'] . '</p>';
     }
-    else
+    else if ($_POST['quantity'] > 0 && ( $_POST['quantity'] < 100 && strcmp($_POST['item'], "--- Select an Item Below ---") != 0))
     {
         $message .= '<p class="alert-success">Trying to do something here</p>';
         $new = $db->prepare("REPLACE INTO ShoppingCart (ItemName, CustomerID, Quantity)
@@ -95,12 +100,14 @@ $c_res = $items->fetchAll();
 // GET ACTIVE SELECTING INFORMATION
 if (count($c_res) > 0) {
     // BUILD THE DROPDOWN LIST
-    $select_form = '<form role="form" method="POST" action="' . $_SERVER['PHP_SELF'] . '"><div class="form-group">Choose an item to select:<br><select class="form-control" name="item">';
+    $select_form = '<form role="form" method="POST" action="' . $_SERVER['PHP_SELF'] . '"><select class="form-control" name="item">';
+    $select_form .= "<option>" . ' --- Select an Item Below --- ' . "</option>";
     foreach ($c_res as $item)
         $select_form .= "<option>" . $item['ItemName'] . "</option>";
 } else {
     $select_form = '<p class="alert-warning">There are no available items.  Try again later</p>';
 }
+
 
 ?>
 
@@ -116,12 +123,12 @@ if (count($c_res) > 0) {
         <h2 class="panel-title">Welcome to Mario Cart!</h2>
     </div>
     <div class="panel-body">
-
     </div>
 </div>
 <div class="container">
     <div class="row">
         <div class="col-sm-4">
+
             <ul class="nav nav-pills nav-stacked">
                 <!--  ************************** -->
                 <!--  SET NAVIGATION ACTIVE HERE -->
@@ -139,9 +146,11 @@ if (count($c_res) > 0) {
                     <hr>
                     <?php echo $message; ?>
                         <form role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                            Select the item you'd like to purchase below.
+                            <?php echo $select_form; ?>
                             <div class="form-group">
-                                <?php echo $select_form; ?>
-                                Enter the amount of this item you'd like to buy. Must be more than 0, up to the maximum items in stock.
+                                <?php echo
+                                "Enter the amount of the item you'd like to buy. Must be more than 0, up to the maximum amount in stock."; ?>
                                 <input type="number" placeholder="enter item quantity" name="quantity" class="form-control" />
                                 <button class="form-group btn btn-lg btn-primary" type="submit" name="accept" value="active">Accept</button>
                             </div>
@@ -151,4 +160,5 @@ if (count($c_res) > 0) {
             </div>
         </div>
     </div>
+    </body>
 <?php include("./inc.footer.php"); ?>

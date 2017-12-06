@@ -196,52 +196,53 @@ $course_list .= "</tbody></table>";
 
 
 ?>
-    <body>
-    <style>
-        body {
-            background-image: url("images/mountain.jpg");
-        }
-
-    </style>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h2 class="panel-title">Welcome to Mario Cart!</h2>
-        </div>
+<body>
+<style>
+    body {
+        background-image: url("images/mountain.jpg");
+    }
+</style>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="panel-title">Welcome to Mario Cart!</h2>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-4">
-                <ul class="nav nav-pills nav-stacked">
-                    <!--  ************************** -->
-                    <!--  SET NAVIGATION ACTIVE HERE -->
-                    <!--  ************************** -->
-                    <li role="presentation" class="inactive"><a href="OwnerProfile.php">Owner Profile</a></li>
-                    <li role="presentation" class="active">  <a href="ManageItems.php">Manage Items</a></li>
-                    <li role="presentation" class="inactive"><a href="Logout.php">Logout</a></li>
-                </ul>
-            </div>
-            <div class="col-sm-8">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Welcome, <?php echo $name; ?>.  Manage Items Below.</div>
-                    <div class="panel-body">
-                        <?php echo $ItemList ?>
-                        <?php echo $message ?>
-                        <hr>
-                        <form role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                            <div class="form-group">
-                                Enter an item name to add to the shop. Must be between 1 and 20 characters long.
-                                <input type="text" placeholder="enter item name" name="item" class="form-control" />
-                                Enter the price of the Item. Must be between $0 and $10,000.
-                                <input type="number" step ="0.01" placeholder="enter item price" name="Price" class="form-control" />
-                                Enter the quantity available in the shop. Must be more than 0, less than 100.
-                                <input type="number" placeholder="enter item quantity" name="Quantity" class="form-control" />
-                                <button class="form-group btn btn-lg btn-primary" type="submit" name="accept" value="active">Accept</button>
-                            </div>
-                        </form>
-                    </div>
+    <div class="panel-body">
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <ul class="nav nav-pills nav-stacked">
+                <!--  ************************** -->
+                <!--  SET NAVIGATION ACTIVE HERE -->
+                <!--  ************************** -->
+                <li role="presentation" class="inactive"><a href="OwnerProfile.php">Owner Profile</a></li>
+                <li role="presentation" class="active">  <a href="ManageItems.php">Manage Items</a></li>
+                <li role="presentation" class="inactive"><a href="Logout.php">Logout</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">Welcome, <?php echo $name; ?>.  Manage Items Below.</div>
+                <div class="panel-body">
+                    <?php echo $ItemList ?>
+                    <?php echo $message ?>
+                    <hr>
+                    <form role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                        <div class="form-group">
+                            Enter an item name to add to the shop. Must be between 1 and 20 characters long.
+                            <input type="text" placeholder="enter item name" name="item" class="form-control" />
+                            Enter the price of the Item. Must be between $0 and $10,000.
+                            <input type="number" step ="0.01" placeholder="enter item price" name="Price" class="form-control" />
+                            Enter the quantity available in the shop. Must be more than 0, less than 100.
+                            <input type="number" placeholder="enter item quantity" name="Quantity" class="form-control" />
+                            <button class="form-group btn btn-lg btn-primary" type="submit" name="accept" value="active">Accept</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    </body>
+</div>
+</body>
 <?php include("./inc.footer.php");?>
