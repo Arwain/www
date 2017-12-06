@@ -236,7 +236,7 @@ $course_list .= "</tbody></table>";
                         <hr>
                         <form role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                             <div class="form-group">
-                                Enter an item name to add to the shop. Must be less than 8 characters.
+                                Enter an item name to add to the shop. Must be less than 20 characters.
                                 <input type="text" placeholder="enter item name" name="item" class="form-control" />
                                 Enter the quantity available in the shop. Must be more than 0, less than 100.
                                 <input type="number" placeholder="enter item quantity" name="Quantity" class="form-control" />
