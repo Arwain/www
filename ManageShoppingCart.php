@@ -129,7 +129,6 @@ if (count($c_res) > 0)
                 <li role="presentation" class="active">    <a href="ManageShoppingCart.php">Manage Shopping Cart</a></li>
                 <li role="presentation" class="inactive">  <a href="ContactOwner.php">Contact Owner</a></li>
                 <li role="presentation" class="inactive">  <a href="Logout.php">Logout</a></li>
-
             </ul>
         </div>
         <div class="col-sm-8">
