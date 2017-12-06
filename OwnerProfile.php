@@ -46,7 +46,7 @@ $r = $db->query($q);
 
 $row = $r->fetch(); // GET A SINGLE ROW
 
-$username = $row['UserName'];
+$username = $row['Username'];
 $userid   = $row['UserID'];
 $name     = $row['PreferredName'];
 $email    = $row['Email'];
@@ -82,7 +82,7 @@ $email    = $row['Email'];
           <div class="panel-heading">Welcome, <?php echo $name; ?>.  Update your info below.</div>
           <div class="panel-body">
             <h3>Username: <?php echo $username; ?></h3>
-        		<?php echo $message; ?>
+<!--        		--><?php //echo $message; ?>
                 <form role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <div class="form-group">
 		        <input type="text" class="form-control" value="<?php echo $name; ?>" placeholder="enter preferred name" name="pref_name" autofocus />
