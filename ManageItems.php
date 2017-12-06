@@ -35,11 +35,13 @@ if (isset($_POST['submit']))
     {
         $message .= '<p class="alert-danger">Item Name Invalid: ' . $_POST['item'] . '</p>';
     }
+<<<<<<< HEAD
     if ($_POST['Quantity'] <= 0 || $_POST['Quantity'] >= 100)
     {
         $message .= '<p class="alert-danger">Item Quantity Invalid: ' . $_POST['Quantity'] . '</p>';
     }
     if ($_POST['Price'] <= 0.00 || $_POST['Price'] >= 10000.00)
+=======
     {
         $message .= '<p class="alert-danger">Item Price Invalid: $ ' . $_POST['Price'] . '</p>';
     }
