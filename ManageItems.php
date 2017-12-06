@@ -46,7 +46,8 @@ if (isset($_POST['submit']))
     else
     {
         $new_message = '<p class="alert-success">Trying to do something here</p>';
-        $new = $db->prepare("REPLACE INTO Store (ItemName, OwnerID, Quantity, Price) VALUES (:ItemName, :OwnerID, :Quantity, :Price)");
+        $new = $db->prepare("REPLACE INTO Store (ItemName, OwnerID, Quantity, Price)
+        VALUES (:ItemName, :OwnerID, :Quantity, :Price)");
         if ($new->execute(array(':ItemName' => $_POST['item'], ':OwnerID' => $_SESSION['userid'], ':Quantity' => $_POST['Quantity'], ':Price'=> $_POST['Price'])))
         {
             $new_message = '<p class="alert-success">Successfully added item '. $_POST['item'] .'</p>' ;
