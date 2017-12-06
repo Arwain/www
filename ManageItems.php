@@ -99,7 +99,7 @@ if ($c->rowCount() > 0)
 }
 else
 {
-    $ItemList = '<p class="alert-warning">There are no items. Add one below.</p>';
+    $message = '<p class="alert-warning">There are no items. Add one below.</p>';
 }
 
 /*
@@ -229,7 +229,6 @@ $course_list .= "</tbody></table>";
                 <div class="panel panel-default">
                     <div class="panel-heading">Welcome, <?php echo $name; ?>.  Manage Items Below</div>
                     <div class="panel-body">
-                        <!--<?php echo $mod_message; ?>-->
                         <?php echo $ItemList; ?>
                         <hr>
                         <form role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
@@ -241,7 +240,7 @@ $course_list .= "</tbody></table>";
                                 Enter the price of the Item. Must be between $0 and $10,000.
                                 <input type="number" step ="0.01" placeholder="enter item price" name="Price" class="form-control" />
                                 <button class="form-group btn btn-lg btn-primary" type="submit" name="submit" value="active">Add Item</button>
-                                <!--<?php echo $message; ?>-->
+                                <?php echo $message; ?>
                             </div>
                         </form>
                     </div>
