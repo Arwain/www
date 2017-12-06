@@ -27,34 +27,33 @@ $userid   = $row['UserID'];
 $name     = $row['PreferredName'];
 $email    = $row['Email'];
 
-
 // Handle Updates to Items
 if (isset($_POST['submit']))
 {
     if (strlen($_POST['item']) > 20 || strlen($_POST['item']) == 0)
     {
-        $new_message = '<p class="alert-danger">Item Name Invalid: ' . $_POST['item'] . '</p>';
+        $message = '<p class="alert-danger">Item Name Invalid: ' . $_POST['item'] . '</p>';
     }
-    else if ($_POST['Quantity'] == 0 || $_POST['Quantity'] > 100)
+    else if ($_POST['Quantity'] <= 0 || $_POST['Quantity'] > 100)
     {
-        $new_message = '<p class="alert-danger">Item Quantity Invalid: ' . $_POST['Quantity'] . '</p>';
+        $message = '<p class="alert-danger">Item Quantity Invalid: ' . $_POST['Quantity'] . '</p>';
     }
-    else if ($_POST['Price'] == 0.00 || $_POST['Price'] > 10000.00)
+    else if ($_POST['Price'] <= 0.00 || $_POST['Price'] > 10000.00)
     {
-        $new_message = '<p class="alert-danger">Item Price Invalid: ' . $_POST['Price'] . '</p>';
+        $message = '<p class="alert-danger">Item Price Invalid: ' . $_POST['Price'] . '</p>';
     }
     else
     {
-        $new_message = '<p class="alert-success">Trying to do something here</p>';
+        $message = '<p class="alert-success">Trying to do something here</p>';
         $new = $db->prepare("REPLACE INTO Store (ItemName, OwnerID, Quantity, Price)
         VALUES (:ItemName, :OwnerID, :Quantity, :Price)");
         if ($new->execute(array(':ItemName' => $_POST['item'], ':OwnerID' => $_SESSION['userid'], ':Quantity' => $_POST['Quantity'], ':Price'=> $_POST['Price'])))
         {
-            $new_message = '<p class="alert-success">Successfully added item '. $_POST['item'] .'</p>' ;
+            $message = '<p class="alert-success">Successfully added item '. $_POST['item'] .'</p>' ;
         }
         else
         {
-            $new_message = '<p class="alert-warning">Failed to add item, that item might already exist.</p>';
+            $message = '<p class="alert-warning">Failed to add item, that item might already exist.</p>';
         }
     }
 }
@@ -68,7 +67,6 @@ if(isset($_GET['action']))
         $remove = $db->prepare('DELETE FROM Store WHERE ItemName = :ItemName');
         if($remove->execute(array(':ItemName'=> $_GET['it'])))
         {
-
             $message = '<p class="alert-success">Successfully removed item: ' . $_GET['it'] . '</p>';
         } else {
             $message = '<p class="alert-warning">Error removing item.  Try again later.</p>';
@@ -94,7 +92,6 @@ if ($c->rowCount() > 0)
         $ItemList .= '<tr><td>' . $Item['ItemName'] . '</td><td>'.$Item['Price']. '</td><td>'.$Item['Quantity']. '</td>';
         $ItemList .= '<td><a href="' . $_SERVER['PHP_SELF'] . '?action=del&it='.$Item['ItemName'] . '&uid='.$_SESSION['userid'].'">Delete</a></td></tr>';
     }
-
     $ItemList .= "</tbody></table>";
 }
 else
@@ -229,7 +226,13 @@ $course_list .= "</tbody></table>";
                 <div class="panel panel-default">
                     <div class="panel-heading">Welcome, <?php echo $name; ?>.  Manage Items Below</div>
                     <div class="panel-body">
-                        <?php echo $ItemList; ?>
+                        <?php
+                        if($c->rowCount() > 0)
+                        {
+                            echo $ItemList;
+                        }
+                        echo $message;
+                        ?>
                         <hr>
                         <form role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                             <div class="form-group">
@@ -240,7 +243,6 @@ $course_list .= "</tbody></table>";
                                 Enter the price of the Item. Must be between $0 and $10,000.
                                 <input type="number" step ="0.01" placeholder="enter item price" name="Price" class="form-control" />
                                 <button class="form-group btn btn-lg btn-primary" type="submit" name="submit" value="active">Add Item</button>
-                                <!--<?php echo $message; ?>-->
                             </div>
                         </form>
                     </div>

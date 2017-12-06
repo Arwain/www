@@ -10,6 +10,8 @@
       <secret-storage>master_key</secret-storage>
       <user-name>bmsg</user-name>
       <introspection-schemas>*:bmsg</introspection-schemas>
+      <user-name>khoadoan</user-name>
+      <introspection-schemas>*:bmsg,khoadoan</introspection-schemas>
     </data-source>
   </component>
 </project>
