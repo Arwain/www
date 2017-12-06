@@ -48,7 +48,7 @@ if (isset($_POST['login'])) // HANDLE THE FORM
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TCSS445 Project Page Sign In</title>
+    <title>Mario Cart!</title>
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link href="./css/signin.css" rel="stylesheet">
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
