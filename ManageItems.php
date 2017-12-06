@@ -99,7 +99,7 @@ if ($c->rowCount() > 0)
 }
 else
 {
-    $ItemList = '<p class="alert-warning">There are no items. Add one below.</p>';
+    $message = '<p class="alert-warning">There are no items. Add one below.</p>';
 }
 
 /*
@@ -229,7 +229,6 @@ $course_list .= "</tbody></table>";
                 <div class="panel panel-default">
                     <div class="panel-heading">Welcome, <?php echo $name; ?>.  Manage Items Below</div>
                     <div class="panel-body">
-                        <!--<?php echo $mod_message; ?>-->
                         <?php echo $ItemList; ?>
                         <hr>
                         <form role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
