@@ -110,12 +110,18 @@ if (count($c_res) > 0)
 ?>
 
 <body>
+<style>
+    body {
+        background-image: url("images/mountain.jpg");
+    }
+
+</style>
 <div class="panel panel-default">
     <div class="panel-heading">
         <h2 class="panel-title">Welcome to Mario Cart!</h2>
     </div>
     <div class="panel-body">
-        This mini project leverages Bootstrap 3.3.7 for HTML/CSS/JS, PHP7 and MariaDB 10.1.20
+
     </div>
 </div>
 <div class="container">
