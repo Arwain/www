@@ -5,6 +5,7 @@ if(!isset($_SESSION)){
 
 // SET $page_type = 'customer','owner','public'
 $page_type = 'customer';
+$message = '';
 require('inc.header.php');
 
 

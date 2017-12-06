@@ -28,8 +28,8 @@ $name     = $row['PreferredName'];
 $email    = $row['Email'];
 $message = '';
 
-// Handle Updates to Items
-if (isset($_POST['submit']))
+// Handle Creation/Updates of Items
+if (isset($_POST['accept']))
 {
     if (strlen($_POST['item']) >= 20 || strlen($_POST['item']) == 0)
     {
@@ -235,7 +235,7 @@ $course_list .= "</tbody></table>";
                                 <input type="number" step ="0.01" placeholder="enter item price" name="Price" class="form-control" />
                                 Enter the quantity available in the shop. Must be more than 0, less than 100.
                                 <input type="number" placeholder="enter item quantity" name="Quantity" class="form-control" />
-                                <button class="form-group btn btn-lg btn-primary" type="submit" name="submit" value="active">Add Item</button>
+                                <button class="form-group btn btn-lg btn-primary" type="submit" name="accept" value="active">Accept</button>
                             </div>
                         </form>
                     </div>
