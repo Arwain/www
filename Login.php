@@ -32,7 +32,7 @@ if (isset($_POST['login'])) // HANDLE THE FORM
       $_SESSION['userid']   = $rr[0]['userid'];
       $_SESSION['role']     = $rr[0]['role'];
       
-      // REDIRECT TO THE CORRECDT PORTAL
+      // REDIRECT TO THE CORRECT PORTAL
       $location = ($_SESSION['role'] == 'owner') ? "ManageItems.php" : "CustomerProfile.php";
       header("Location: " . $location);
     } else { // THROW ERROR
@@ -74,6 +74,7 @@ if (isset($_POST['login'])) // HANDLE THE FORM
 		<button class="btn btn-lg btn-primary btn-block" type="submit" name="login">
 			Sign in
 		</button>
+        <li role="presentation" class="inactive"><a href="NewCustomer.php">Create Profile</a></li>
 	</form>
 </div>
   
