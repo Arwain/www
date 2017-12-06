@@ -8,8 +8,6 @@
       </database-info>
       <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
-      <user-name>bmsg</user-name>
-      <introspection-schemas>*:bmsg</introspection-schemas>
     </data-source>
   </component>
 </project>
