@@ -12,32 +12,39 @@ if (!isset($db)) {
     $db = get_connection();
 }
 
-// HANDLE ENROLLMENT FORM
-/*
-$message = '';
-if(isset($_POST['enroll']))
-{
-  $updateq = $db->prepare('INSERT INTO Registration (course_number,student_id) VALUES (:course , :uid)');
-  if($updateq->execute(array(':course' => $_POST['course'], ':uid' => $_SESSION['userid'])))
-  {
-    $message = '<p class="alert-success">Enrolled Successfully in ' . $_POST['course'] . '!!!</p>';
-  } else { // THERE WAS AN ERROR!
-    $message = '<p class="alert-warning">There was an issue</p>.';
-  }
-}
-*/
+# BUILD QUERY
+$q = 'SELECT UserID, Username, PreferredName, Email
+       FROM User
+      WHERE UserID = ' . $_SESSION['userid'];
 
-// HANDLE SELECTING FORM
+$r = $db->query($q);
+
+$row = $r->fetch(); // GET A SINGLE ROW
+
+$username = $row['Username'];
+$userid   = $row['UserID'];
+$name     = $row['PreferredName'];
+$email    = $row['Email'];
 $message = '';
-if (isset($_POST['select'])) {
-    $updateq = $db->prepare('INSERT INTO ShoppingCart VALUES (:item , :uid, :quantity)');
-    if ($updateq->execute(array(':item' => $_POST['item'], ':uid' => $_SESSION['userid'], ':quantity' => $_SESSION['quantity'] + 1))) {
-        $message = '<p class="alert-success">Selected Successfully in ' . $_POST['item'] . '!!!</p>';
-    } else { // THERE WAS AN ERROR!
-        $message = '<p class="alert-warning">There was an issue</p>.';
+
+// Handle Creation/Updates of Items
+if (isset($_POST['accept']))
+{
+    if ($_POST['quantity'] <= 0 || $_POST['quantity'] >= 100)
+    {
+        $message .= '<p class="alert-danger">Item Quantity Invalid: ' . $_POST['quantity'] . '</p>';
+    }
+    else
+    {
+        $message .= '<p class="alert-success">Trying to do something here</p>';
+        $new = $db->prepare("REPLACE INTO ShoppingCart (ItemName, CustomerID, Quantity)
+        VALUES (:ItemName, :CustomerID, :Quantity)");
+        if ($new->execute(array(':ItemName' => $_POST['item'], ':CustomerID' => $_SESSION['userid'], ':Quantity' => $_POST['quantity'], )))
+        {
+            $message = '<p class="alert-success">Successfully added or updated item '. $_POST['item'] .'</p>' ;
+        }
     }
 }
-
 // HANDLE DELETE ACTION
 if (isset($_GET['action'])) {
     // MAKE SURE THE SESSION USER IS THE SAME AS THE USER REQUEST.
@@ -62,7 +69,7 @@ $c = $db->prepare('SELECT ItemName, Quantity FROM ShoppingCart WHERE CustomerID 
 $c->execute(array(':uid' => $_SESSION['userid']));
 
 $c_res = $c->fetchAll();
-if (count($c_res) > 0) {  // THERE ARE COURSES, DRAW THE FORM
+if (count($c_res) > 0) {  // THERE ARE ITEMS, DRAW THE FORM
     $item_list = '<table class="table table-striped"><thead><tr><th>ItemName</th><th>Quantity</th><th>Action</th></tr></thead><tbody>';
     foreach ($c_res as $item) {
         $item_list .= '<tr><td>' . $item['ItemName'] . '</td>';
@@ -91,10 +98,6 @@ if (count($c_res) > 0) {
     $select_form = '<form role="form" method="POST" action="' . $_SERVER['PHP_SELF'] . '"><div class="form-group">Choose an item to select:<br><select class="form-control" name="item">';
     foreach ($c_res as $item)
         $select_form .= "<option>" . $item['ItemName'] . "</option>";
-    $quantity_form = '<input type="number" placeholder="enter item quantity" name="Quantity" class="form-control"/>';
-
-    $quantity_form .= '</select><button class="btn btn-lg btn-primary" type="submit" name="select">Select</button>';
-
 } else {
     $select_form = '<p class="alert-warning">There are no available items.  Try again later</p>';
 }
@@ -130,18 +133,22 @@ if (count($c_res) > 0) {
         </div>
         <div class="col-sm-8">
             <div class="panel panel-default">
-                <div class="panel-heading">Welcome, <?php echo $name; ?>. Update your registration below.</div>
+                <div class="panel-heading">Welcome, <?php echo $name; ?>. View your shopping cart below!</div>
                 <div class="panel-body">
                     <?php echo $item_list; ?>
                     <hr>
                     <?php echo $message; ?>
-                    <?php echo $select_form; ?>
-                    <?php echo $quantity_form; ?>
-                        <!--<?php echo $message; ?>-->
+                        <form role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                            <div class="form-group">
+                                <?php echo $select_form; ?>
+                                Enter the amount of this item you'd like to buy. Must be more than 0, up to the maximum items in stock.
+                                <input type="number" placeholder="enter item quantity" name="quantity" class="form-control" />
+                                <button class="form-group btn btn-lg btn-primary" type="submit" name="accept" value="active">Accept</button>
+                            </div>
+                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 <?php include("./inc.footer.php"); ?>

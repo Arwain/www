@@ -58,6 +58,7 @@ if (isset($_POST['login'])) // HANDLE THE FORM
 </head>
 
 <body>
+<div class="overlay"></div>
 <div class="container">
     <!-- BEGIN CONTENT -->
     <h2 class="text-center">Thanks for shopping with MarioCart!</h2>
@@ -72,7 +73,6 @@ if (isset($_POST['login'])) // HANDLE THE FORM
         </button>
     </form>
 </div>
-<div class="overlay"></div>
 <style>
     .overlay {
         opacity: .3;

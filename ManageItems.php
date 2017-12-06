@@ -26,34 +26,32 @@ $username = $row['Username'];
 $userid   = $row['UserID'];
 $name     = $row['PreferredName'];
 $email    = $row['Email'];
+$message = '';
 
-// Handle Updates to Items
-if (isset($_POST['submit']))
+// Handle Creation/Updates of Items
+if (isset($_POST['accept']))
 {
-    if (strlen($_POST['item']) > 20 || strlen($_POST['item']) == 0)
+    if (strlen($_POST['item']) >= 20 || strlen($_POST['item']) == 0)
     {
-        $message = '<p class="alert-danger">Item Name Invalid: ' . $_POST['item'] . '</p>';
+        $message .= '<p class="alert-danger">Item Name Invalid: ' . $_POST['item'] . '</p>';
     }
-    else if ($_POST['Quantity'] <= 0 || $_POST['Quantity'] > 100)
+    if ($_POST['Quantity'] <= 0 || $_POST['Quantity'] >= 100)
     {
-        $message = '<p class="alert-danger">Item Quantity Invalid: ' . $_POST['Quantity'] . '</p>';
+        $message .= '<p class="alert-danger">Item Quantity Invalid: ' . $_POST['Quantity'] . '</p>';
     }
-    else if ($_POST['Price'] <= 0.00 || $_POST['Price'] > 10000.00)
+    if ($_POST['Price'] <= 0.00 || $_POST['Price'] >= 10000.00)
     {
-        $message = '<p class="alert-danger">Item Price Invalid: ' . $_POST['Price'] . '</p>';
+        $message .= '<p class="alert-danger">Item Price Invalid: $ ' . $_POST['Price'] . '</p>';
     }
-    else
+    elseif (strlen($_POST['item']) < 20 && (strlen($_POST['item']) != 0 && $_POST['Quantity'] >= 0 && ($_POST['Quantity'] < 100
+                && ($_POST['Price'] > 0.00 && $_POST['Price'] < 10000.00))))
     {
-        $message = '<p class="alert-success">Trying to do something here</p>';
+        $message .= '<p class="alert-success">Trying to do something here</p>';
         $new = $db->prepare("REPLACE INTO Store (ItemName, OwnerID, Quantity, Price)
         VALUES (:ItemName, :OwnerID, :Quantity, :Price)");
         if ($new->execute(array(':ItemName' => $_POST['item'], ':OwnerID' => $_SESSION['userid'], ':Quantity' => $_POST['Quantity'], ':Price'=> $_POST['Price'])))
         {
-            $message = '<p class="alert-success">Successfully added item '. $_POST['item'] .'</p>' ;
-        }
-        else
-        {
-            $message = '<p class="alert-warning">Failed to add item, that item might already exist.</p>';
+            $message = '<p class="alert-success">Successfully added or updated item '. $_POST['item'] .'</p>' ;
         }
     }
 }
@@ -96,7 +94,7 @@ if ($c->rowCount() > 0)
 }
 else
 {
-    $message = '<p class="alert-warning">There are no items. Add one below.</p>';
+    $ItemList = '<p class="alert-warning">There are no items. Add one below.</p>';
 }
 
 /*
@@ -224,25 +222,20 @@ $course_list .= "</tbody></table>";
             </div>
             <div class="col-sm-8">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Welcome, <?php echo $name; ?>.  Manage Items Below</div>
+                    <div class="panel-heading">Welcome, <?php echo $name; ?>.  Manage Items Below.</div>
                     <div class="panel-body">
-                        <?php
-                        if($c->rowCount() > 0)
-                        {
-                            echo $ItemList;
-                        }
-                        echo $message;
-                        ?>
+                        <?php echo $ItemList ?>
+                        <?php echo $message ?>
                         <hr>
                         <form role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                             <div class="form-group">
-                                Enter an item name to add to the shop. Must be less than 8 characters.
+                                Enter an item name to add to the shop. Must be between 1 and 20 characters long.
                                 <input type="text" placeholder="enter item name" name="item" class="form-control" />
-                                Enter the quantity available in the shop. Must be more than 0, less than 100.
-                                <input type="number" placeholder="enter item quantity" name="Quantity" class="form-control" />
                                 Enter the price of the Item. Must be between $0 and $10,000.
                                 <input type="number" step ="0.01" placeholder="enter item price" name="Price" class="form-control" />
-                                <button class="form-group btn btn-lg btn-primary" type="submit" name="submit" value="active">Add Item</button>
+                                Enter the quantity available in the shop. Must be more than 0, less than 100.
+                                <input type="number" placeholder="enter item quantity" name="Quantity" class="form-control" />
+                                <button class="form-group btn btn-lg btn-primary" type="submit" name="accept" value="active">Accept</button>
                             </div>
                         </form>
                     </div>
